@@ -1,30 +1,40 @@
 /*
  *  ofxTransparentWindow.cpp
  *
- *  Created by Akira on 10/10/07.
- *  Copyright 2010 yesMAYBEno. All rights reserved.
+ *  Created by n3m3da on 25/01/18. Forked from <https://github.com/jeffcrouse/ofxTransparentWindow>
+ *  Copyleft 2018 D·COD. No rights reserved.
  *
  */
 
 #include "ofxTransparentWindow.h"
-
-//extern "C" {
 #include "ofxTransparentWindowUtil.h"
-//}
 
-void ofxTransparentWindow::afterMainSetup(int transparentType) {
-	
+//--------------------------------------------------------------
+void ofxTransparentWindow::afterMainSetup() {
 	ofSetBackgroundAuto(false);	
-	removeWindowBarAndTitle(transparentType);	
-	
+	removeWindowBarAndTitle();
+
+	semaphore = false;
 }
 
-void ofxTransparentWindow::update() {
-	
-	glEnable(GL_MULTISAMPLE);
-	glClearColor(0.0, 0.0, 0.0, 0.0);
-	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	
-	updateView();
+//--------------------------------------------------------------
+void ofxTransparentWindow::mouseDragged(int x, int y){
+	currentLocation.set(ofGetWindowPositionX()+x,ofGetWindowPositionY()+y);
+    newOrigin.set(currentLocation.x-initialLocation.x,currentLocation.y-initialLocation.y);
+    ofSetWindowPosition(newOrigin.x,newOrigin.y);
+}
 
+//--------------------------------------------------------------
+void ofxTransparentWindow::mousePressed(int x, int y){
+	if(!semaphore){
+        semaphore = true;
+        initialLocation.set(x,y);
+        currentLocation.set(ofGetWindowPositionX()+x,ofGetWindowPositionY()+y);
+    }
+}
+
+//--------------------------------------------------------------
+void ofxTransparentWindow::mouseReleased(int x, int y){
+	semaphore = false;
 }
 

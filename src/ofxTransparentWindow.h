@@ -1,8 +1,8 @@
 /*
  *  ofxTransparentWindow.h
  *
- *  Created by Akira on 10/10/07.
- *  Copyright 2010 yesMAYBEno. All rights reserved.
+ *  Created by n3m3da on 25/01/18. Original fork from <https://github.com/jeffcrouse/ofxTransparentWindow>
+ *  Copyleft 2018 D·COD. No rights reserved.
  *
  */
 
@@ -12,12 +12,17 @@
 
 class ofxTransparentWindow {
 
-public:
-	static const int SCREENSAVER = 0;
-	static const int DESKTOPBG = 1;
-	static const int NORMAL = 2;	
+public:	
 	
-	void afterMainSetup(int transparentType = 2);
-	void update();
+	void afterMainSetup();
+
+	void mouseDragged(int x, int y);
+    void mousePressed(int x, int y);
+    void mouseReleased(int x, int y);
+
+	bool            semaphore;
+    ofPoint         initialLocation;
+    ofPoint         currentLocation;
+    ofPoint         newOrigin;
 	
 };

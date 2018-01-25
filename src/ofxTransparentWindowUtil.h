@@ -1,12 +1,11 @@
 /*
  *  ofxTransparentWindowUtil.h
  *
- *  Created by Akira on 10/10/07.
- *  Copyright 2010 yesMAYBEno. All rights reserved.
+ *  Created by n3m3da on 25/01/18. Original fork from <https://github.com/jeffcrouse/ofxTransparentWindow>
+ *  Copyleft 2018 D·COD. No rights reserved.
  *
  */
-
+ 
 #pragma once
 
-extern void removeWindowBarAndTitle(int transparentType);
-extern void updateView();
+extern void removeWindowBarAndTitle();
