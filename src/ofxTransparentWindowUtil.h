@@ -5,7 +5,17 @@
  *  Copyleft 2018 D·COD. No rights reserved.
  *
  */
- 
+
 #pragma once
 
 extern void removeWindowBarAndTitle();
+
+#ifdef TARGET_LINUX
+typedef struct{
+	unsigned long   flags;
+	unsigned long   functions;
+	unsigned long   decorations;
+	long            inputMode;
+	unsigned long   status;
+} Hints;
+#endif

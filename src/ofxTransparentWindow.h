@@ -12,17 +12,17 @@
 
 class ofxTransparentWindow {
 
-public:	
-	
-	void afterMainSetup();
+public:
 
-	void mouseDragged(int x, int y);
+		void afterMainSetup();
+
+		void mouseDragged(int x, int y);
     void mousePressed(int x, int y);
     void mouseReleased(int x, int y);
 
-	bool            semaphore;
+		bool            semaphore;
     ofPoint         initialLocation;
     ofPoint         currentLocation;
     ofPoint         newOrigin;
-	
+
 };
